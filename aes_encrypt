@@ -1,0 +1,8 @@
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+
+def aes_encrypt(plaintext, key):
+    cipher = AES.new(key, AES.MODE_ECB)
+    padded_plaintext = pad(plaintext.encode(), AES.block_size)
+    ciphertext = cipher.encrypt(padded_plaintext)
+    return ciphertext.hex()
